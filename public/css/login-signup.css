@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-primary: #ffffff;
+    --clr-secondary: #0000ff;
+    --clr-shadow: hsl(36, 100%, 61%);
+    --clr-warning: #66D2D6;
+    --clr-title: #02a1fd;
+    --clr-fourth: #C50226;
+    --clr-black: #000000;
+}
+
+.container {
+    font-family: sans-serif;
+    background: url(../Images/Background-Signup.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container .logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    color: var(--clr-black);
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+    margin-left: 30px;
+}
+
+.passAgreed {
+    display: none;
+}
+
+.passError {
+    display: block;
+}
+
+#classChange {
+    margin-top: 1px;
+    text-align: left;
+    width: 90%;
+    color: var(--clr-fourth);
+}
+
+#classChange img {
+    vertical-align: text-bottom;
+}
+
+form .error img {
+    vertical-align: text-top;
+}
+
+p[class="error"] {
+    font-size: 1rem;
+    font-family: sans-serif;
+    color: var(--clr-fourth);
+    background-color: #f8d8db;
+    width: 90%;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    text-align: center;
+}
+
+.top-btn {
+    position: absolute;
+    top: 1.3rem;
+    right: 2rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 0.6rem;
+    border: solid 0.18rem var(--clr-black);
+    background-color: var(--clr-black);
+    color: var(--clr-primary);
+    padding: .4em;
+    text-align: center;
+    transition: .3s;
+}
+
+.top-btn:hover {
+    background-color: transparent;
+    border: solid 0.18rem var(--clr-black);
+    color: var(--clr-black);
+}
+
+@media (max-width: 768px) {
+    .top-btn {
+        font-size: 1rem;
+    }
+}
+
+::placeholder {
+    font-family: sans-serif;
+}
+
+form {
+    color: var(--clr-black);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 3rem;
+    background: transparent;
+    box-shadow: 1px -1px 20px -10px rgb(0, 0, 0),
+        1px -1px 0px -10px rgb(0, 0, 0);
+    width: 100%;
+    padding: 1rem;
+    max-width: 25rem;
+    z-index: 300;
+}
+
+form h1 {
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    width: 90%;
+    margin-bottom: 0.6rem;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    outline: none;
+    border: solid 0.14rem transparent;
+    background-color: var(--clr-primary);
+}
+
+input[id='confirmPassword'] {
+    margin-bottom: 0;
+}
+
+form input:hover {
+    border: solid 0.14rem var(--clr-black);
+}
+
+form input:focus {
+    border: solid 0.14rem var(--clr-black);
+}
+
+form .radio {
+    margin-top: 0.6rem;
+}
+
+form .radio input,
+label {
+    cursor: pointer;
+}
+
+input[type='radio'] {
+    width: 0.9rem;
+    height: 0.9rem;
+    outline: none;
+}
+
+form .radio label {
+    margin-right: 0.6rem;
+    padding-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+form button {
+    color: var(--clr-primary);
+    background-color: var(--clr-black);
+    font-size: 1.1rem;
+    padding: .5em;
+    border-radius: 3.1rem;
+    margin: 1rem;
+    border: solid 0.18rem var(--clr-black);
+    cursor: pointer;
+    transition: .3s;
+    width: 90%;
+}
+
+form button:hover {
+    background-color: transparent;
+    border: solid 0.18rem var(--clr-black);
+    color: var(--clr-black);
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 12px;
+    }
+}

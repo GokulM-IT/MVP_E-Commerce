@@ -1,0 +1,61 @@
+<%- include('header'); -%>
+
+<head>
+    <title>View Products</title>
+    <link rel="stylesheet" href="css/viewProducts.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <style>
+        .container .card-box-wrapper form .btn-edit {
+            border-color: hsl(238, 88%, 19%);
+            color: hsl(238, 88%, 19%);
+            padding: .5em 1.1em;
+        }
+
+        .container .card-box-wrapper form .btn-dlt {
+            border-color: hsl(349, 98%, 39%);
+            color: hsl(349, 98%, 39%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1><%= title %></h1>
+            <hr/>
+        </div>
+
+        <div class="card-box-wrapper">
+            <% for (i=0; i<products.length; i++) { %>
+                    <% let imgPath=products[i].IMGPATH.slice(13) %>
+
+                    <div class="card-box">
+                        <div class="card-box-img">
+                            <img src="<%= imgPath %>" alt="Products">
+                        </div>
+
+                        <div class="card-box-info">
+                            <h3 id="first"><%= products[i].PRODUCTNAME %></h3>
+                            <h4 id="second">₹<%= products[i].PRICE %></h4>
+                            <p id="third"><%= products[i].PRODUCTDETAILS %></p>
+                        </div>
+
+                        <form action="/edit-products" method="post">
+                            <div>
+                                <button class="btn-edit" type="submit" name="productId" value="<%= products[i].PRODUCTID %>">Edit Product</button>
+                            </div>
+                        </form>
+                        
+                        <form action="/delete-products" method="post">
+                            <div>
+                                <button class="btn-dlt" type="submit" name="productId" value="<%= products[i].PRODUCTID %>">Delete Product</button>
+                            </div>
+                        </form>
+                    </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

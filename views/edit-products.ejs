@@ -1,0 +1,53 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="css/addProducts.css">
+
+    <style>
+        .btn-wrapper a img {
+            vertical-align: text-top;
+        }
+
+        @media (max-width: 576px) {
+            .btn-wrapper a img {
+                vertical-align: middle;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item-1">
+            <h1>Edit <span>Details</span></h1>
+        </div>
+
+        <div class="item-2">
+            <form enctype="multipart/form-data" action="/update-products" method="post" id="myForm">
+                <input type="text" placeholder="Product Name" name="productName" value="<%= products[0].PRODUCTNAME %>" required>
+                <input type="text" placeholder="Product Price" name="productPrice" value="<%= products[0].PRICE %>" required>
+                <textarea name="textArea" id="" placeholder="Product Description" cols="30" rows="10" required><%= products[0].PRODUCTDETAILS %></textarea>
+                
+                <label for="file-btn" class="file-btn">
+                    <input id="file-btn" type="file" placeholder="Product" name="imgFile">Change Photo <img width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/upload-to-cloud--v1.png" alt="upload image" />
+                </label>
+                
+                <div class="btn">
+                    <button type="submit" name="productId" value="<%= products[0].PRODUCTID %>">Update Changes</button>
+                </div>
+                
+                <div class="btn-wrapper">
+                    <div class="side-btn">
+                        <a href="/view-products">View Products</a>
+                    </div>
+                    <div class="log-btn">
+                        <a href="/logout"><img width="20" height="20" src='Images/Logout White.png'/> Logout</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

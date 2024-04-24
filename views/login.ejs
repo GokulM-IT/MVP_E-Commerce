@@ -1,0 +1,54 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" href="css/login-signup.css">
+
+    <style>
+        .signup-link {
+            color: rgb(0, 0, 0);
+            font-family: sans-serif;
+        }
+
+        .signup-link a {
+            color: #2402ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">LOGO</div>
+
+        <form action="/login" method="post">
+            <h1>Log In</h1>
+
+            <input type="email" placeholder="Gmail" name="email" required autocomplete="on">
+            <input type="password" minlength="8" placeholder="Password" name="password" required autocomplete="on">
+
+            <p id="errorMsg" class="<%= passCheck %>"><img src="Images/Error.png" width="18px" height="18px"> Username or Password are incorrect</p>
+            
+            <button type="submit">Log in</button>
+
+            <div class="signup-link">Not a member? <a href="/signup">Signup now</a></div>
+        </form>
+
+        <a class="top-btn" href="/signup" target="_self">Sign Up</a>
+    </div>
+
+    <script>
+        const errorMsg = document.getElementById('errorMsg');
+        const inputs = document.querySelectorAll('input');
+
+        if (errorMsg.hasAttribute('class', 'error')) {
+            inputs.forEach(input => {
+                input.addEventListener('click', () => {
+                    errorMsg.setAttribute('class', 'passAgreed');
+                });
+            });
+        };
+    </script>
+</body>
+
+</html>

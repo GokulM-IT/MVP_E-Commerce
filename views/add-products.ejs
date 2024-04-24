@@ -1,0 +1,91 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Add Product</title>
+    <link rel="stylesheet" href="css/addProducts.css">
+
+    <style>
+        .container form #message {
+            color: #0000ff;
+        }
+
+        .btn-wrapper a img {
+            vertical-align: middle;
+        }
+
+        @media (max-width: 576px) {
+            .btn-wrapper a img {
+                vertical-align: middle;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item-1">
+            <h1>Product <span>Details</span></h1>
+        </div>
+
+        <div class="item-2">
+            <form enctype="multipart/form-data" action="/add-products" method="post" id="myForm">
+                <div id="message"></div>
+                
+                <input type="text" placeholder="Product Name" name="productName" required>
+                <input type="text" placeholder="Product Price" name="productPrice" required>
+                <textarea name="textArea" id="" placeholder="Product Description" cols="30" rows="10" required></textarea>
+                
+                <label for="file-btn" class="file-btn">
+                    <input id="file-btn" type="file" placeholder="Product" name="imgFile" required>Upload an photo <img width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/upload-to-cloud--v1.png" alt="upload Icon" />
+                </label>
+                
+                <div class="btn">
+                    <button type="submit">Add Product</button>
+                </div>
+
+                <div class="btn-wrapper">
+                    <div class="side-btn-1">
+                        <a href="/view-orders">View Orders</a>
+                    </div>
+                    <div class="side-btn">
+                        <a href="/view-products">View Products</a>
+                    </div>
+                    <div class="log-btn">
+                        <a href="/logout"><img src='Images/Logout White.png' alt="Logout Icon" width="20" height="20" /> Logout</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('myForm');
+        const msg = document.getElementById('message');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            try {
+                let response = await fetch('/add-products', {
+                    method: 'POST',
+                    body: new FormData(this)
+                });
+
+                if (response.ok) {
+                    return msg.textContent = "The product has been successfully submitted";
+                } else {
+                    return msg.textContent = "The product has not been submitted yet";
+                }
+            } catch (error) {
+                return msg.textContent = "The product has not been submitted yet";
+            } finally {
+                setTimeout(() => {
+                    msg.textContent = '';
+                    this.reset();
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>

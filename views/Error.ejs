@@ -1,0 +1,42 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Password Error</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container img {
+            width: 600px;
+            height: 600px;
+        }
+
+        @media (max-width: 576px) {
+            .container img {
+                width: 350px;
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="<%= imgPath %>" alt="Error Image">
+    </div>
+</body>
+
+</html>

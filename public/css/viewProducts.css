@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #555;    
+}
+
+:root {
+    --clr-primary: #618264;
+    --clr-secondary: #ffffff;
+    --clr-third:  #4b4848;
+    --clr-fourth: hsl(349, 98%, 39%);
+}
+
+body {
+    background: #fffafa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container .title {
+    margin-top: 0.8rem;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--clr-primary);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container .title hr {
+    margin: 0 18rem;
+    margin-top: 0.8rem;
+}
+
+@media (max-width: 1024px) {
+    .container .title hr {
+        margin: 0 5rem;
+        margin-top: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container .title hr {
+        margin: 0 4rem;
+        margin-top: 0.8rem;
+    }
+}
+
+.card-box-wrapper {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+}
+
+.card-box {
+    border-radius: 40px;
+    max-width: 300px;
+    overflow: hidden;
+    background-color: var(--clr-secondary);
+    box-shadow:  16px 16px 50px #b3afaf,
+                -15px -15px 50px #ffffff;
+}
+
+.card-box-img {
+    object-fit: cover;
+    width: 100%;
+    height: 348px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-box-img img {
+    transition: transform 0.3s ease;
+    width: 300px;
+}
+
+.card-box-img img:hover {
+    transform: scale(1.1);
+}
+
+.card-box-info {
+    background: linear-gradient(hsl(0, 0%, 96%), hsl(0, 0%, 100%));
+    border-top: 1px solid hsl(0, 0%, 96%);
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-box-info #first {
+    font-size: 1.3rem;
+    margin-bottom: 3px;
+    font-family: sans-serif;
+}
+
+.card-box-info #second {
+    color: var(--clr-fourth);
+    margin-bottom: 3px;
+}
+
+.card-box-info #third {
+    color: var(--clr-third);
+    width: 30ch;
+}
+
+@media (max-width: 576px) {
+    .container .title {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .card-box-wrapper {
+        padding: 0;
+    }
+}

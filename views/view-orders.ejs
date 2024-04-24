@@ -1,0 +1,36 @@
+<%- include('header'); -%>
+
+<head>
+    <title>View Orders</title>
+    <link rel="stylesheet" href="css/viewProducts.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1><%= title %></h1>
+            <hr/>
+        </div>
+
+        <div class="card-box-wrapper">
+            <% for (i=0; i<products.length; i++) { %>
+                <% let imgPath=products[i].IMGPATH.slice(13); %>
+
+                    <div class="card-box">
+                        <div class="card-box-img">
+                            <img src="<%= imgPath %>" alt="Products">
+                        </div>
+                        
+                        <div class="card-box-info">
+                            <h3 id="first"><%= products[i].PRODUCTNAME %></h3>
+                            <h4 id="second">₹<%= products[i].PRICE %></h4>
+                            <p id="third"><%= products[i].PRODUCTDETAILS %></p>
+                        </div>
+                    </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

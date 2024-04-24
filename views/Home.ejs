@@ -1,0 +1,148 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/viewProducts.css">
+
+    <style>
+        #Hero .container .info {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #Product .container hr {
+            margin-top: 1.8rem;
+        }
+
+        ul li a img {
+            vertical-align: text-bottom;
+        }
+
+        form img {
+            vertical-align: text-bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <body>
+        <nav>
+            <div class="logo">LOGO</div>
+
+            <div class="list">
+                <ul>
+                    <li><a href="#Hero"><img width="24" height="24" src='Images/Home.png'/> Home</a></li>
+                    <li><a href="#Product"><img width="24" height="24" src='Images/Products.png'/> Products</a></li>
+                    <li><a href="/view-cart"><img width="24" height="24" src='Images/cart.png'/> View Cart</a></li>
+                    <li id="last"><a href="/logout"><img width="24" height="24" src='Images/Logout.png'/> Logout</a></li>
+                </ul>
+
+                <div id="click-btn" class="nav-img">
+                    <img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/menu--v3.png" alt="menu--v3"/>
+                </div>
+            </div>
+        </nav>
+
+        <ul id="res-list" class="nav-list active">
+            <li><a href="#Hero"><img width="24" height="24" src='Images/Home.png'/> Home</a></li>
+            <li><a href="#Product"><img width="24" height="24" src='Images/Products.png'/> Products</a></li>
+            <li><a href="/view-cart"><img width="24" height="24" src='Images/cart.png'/> View Cart</a></li>
+            <li><a href="/logout"><img width="24" height="24" src='Images/Logout.png'/> Logout</a></li>
+        </ul>
+
+        <section id="Hero">
+            <div class="container">
+                <div class="info">
+                    <h1>Trending <span>Collections</span></h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, tortor eget ullamcorper ultricies, felis leo tristique erat  accumsan lacinia turpis lobortis vel.</p>
+                    <div><a href="#Product">SHOP NOW!</a></div>
+                </div>
+
+                <div class="img">
+                    <img src="Images/Background.png">
+                </div>
+            </div>
+        </section>
+
+        <section id="Product">
+            <div class="container">
+                <div class="title">
+                    <h1><%= title %></h1>
+                    <hr/>
+                </div>
+
+                <div class="card-box-wrapper">
+                    <% for (i=0; i<products.length; i++) { %>
+                            <% let imgPath=products[i].IMGPATH.slice(13); %>
+
+                            <div class="card-box">
+                                <div class="card-box-img">
+                                    <img src="<%= imgPath %>" alt="Products">
+                                </div>
+
+                                <div class="card-box-info">
+                                    <h3 id="first"><%= products[i].PRODUCTNAME %></h3>
+                                    <h4 id="second">₹<%= products[i].PRICE %></h4>
+                                    <p id="third"><%= products[i].PRODUCTDETAILS %></p>
+                                </div>
+
+                                <form class="product-form">
+                                    <input type="hidden" name="productId" value="<%= products[i].PRODUCTID %>">
+                                    <div>
+                                        <button class="hide-btn" type="submit"><img src="Images/Add to cart.png" width="25px" height="25px"> Add to Cart</button>
+                                        <div style="display: none;" class="message"><img src="Images/Tick.gif" width="30px" height="30px"></div>
+                                    </div>
+                                </form>
+                            </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const productForms = document.querySelectorAll('.product-form');
+            
+            productForms.forEach(form => {
+                form.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+
+                    const msg = form.querySelector('.message');
+                    const prePayLoad = new FormData(this);
+                    const payLoad = new URLSearchParams(prePayLoad);
+
+                    try {
+                        let response = await fetch('/cart', {
+                            method: 'POST',
+                            body: payLoad
+                        });
+
+                        if (response.ok) {
+                            form.querySelector('.hide-btn').style.display = 'none';
+                            msg.style.display = 'block';
+                        } else {
+                            msg.style.display = 'none';
+                        }
+                    } catch (error) {
+                        msg.style.display = 'none';
+                    } finally {
+                        setTimeout(() => {
+                            form.querySelector('.hide-btn').style.display = '';
+                            msg.style.display = 'none';
+                            form.reset();
+                        }, 4000);
+                    }
+                });
+            });
+
+            // Responsive menu
+            const btn = document.getElementById('click-btn');
+            const list = document.getElementById('res-list');
+
+            btn.addEventListener('click', function () {
+                list.classList.toggle('active');
+            });
+        </script>
+    </body>
+</body>
+
+</html>

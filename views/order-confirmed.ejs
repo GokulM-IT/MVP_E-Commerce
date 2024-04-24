@@ -1,0 +1,74 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Order Confirmed</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background-color: hsl(0, 0%, 96%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .container {
+            max-width: 720px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .container .para {
+            font-size: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .container .para span {
+            color: hsl(0, 96%, 36%);
+        }
+
+        .container div a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.6em 1em;
+            background-color: hsl(0, 0%, 0%);
+            border: 0.18rem solid hsl(0, 0%, 0%);
+            color: #ffffff;
+            border-radius: 50px;
+            transition: .3s ease;
+        }
+
+        .container div a:hover {
+            background-color: transparent;
+            color: hsl(125, 15%, 45%);
+            border: 0.18rem solid hsl(125, 15%, 45%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>THANK YOU!</h1>
+
+        <div class="para">We are getting started on your order right away, and you will receive an order confirmation
+            email shortly to <span><%= email[0].EMAIL %></span>,In the meantime, explore the lastest fashion and get inspired by new trends.
+        </div>
+        
+        <div class="anchor">
+            <a href="/Home">CONTINUE SHOPPING</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<%- include('header'); -%>
+
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/login-signup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">LOGO</div>
+
+        <form action="/signup" method="post" onsubmit="return validateForm ()">
+            <h1>Sign Up</h1>
+
+            <input type="text" placeholder="Name" name="name" required autocomplete="on">
+            <input type="email" placeholder="Gmail" name="email" required autocomplete="on">
+            <input type="password" minlength="8" placeholder="Password" id="password" name="password" required autocomplete="on">
+            <input id="confirmPassword" type="password" minlength="8" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" required autocomplete="on">
+            
+            <p id="classChange" class="passAgreed"><img src="Images/Error.png" width="18px" height="18px"> Passwords do not match</p>
+            
+            <div class="radio">
+                <input type="radio" id="Vendor" name="userType" value="Vendor" required>
+                <label for="Vendor">Vendor</label>
+
+                <input type="radio" id="Customer" name="userType" value="Customer" required>
+                <label for="Customer">Customer</label>
+            </div>
+            
+            <button type="submit" name="submit">Sign Up</button>
+        </form>
+        
+        <a class="top-btn" href="/login" target="_self">Log in</a>
+    </div>
+
+    <script>
+        function validateForm() {
+            const password = document.querySelector("#password").value;
+            const confirmPassword = document.querySelector("#confirmPassword").value;
+            const attr = document.querySelector('#classChange');
+
+            if (password !== confirmPassword) {
+                attr.setAttribute('class', 'passError');
+                
+                setTimeout(() => {
+                    attr.setAttribute('class', 'passAgreed');
+                }, 3000);
+
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>
