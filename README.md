@@ -2,7 +2,7 @@
 An MVP website is a basic version of a web product, offering essential features to meet users' needs without unnecessary complexity. It's designed for rapid development and testing, allowing for quick validation of the product idea with minimal resources.
 
 ## Preview
-[![Gif.gif](https://i.postimg.cc/Bn18kHjq/Gif.gif)](https://postimg.cc/zy8XRLwM)
+![Website Preview](https://res.cloudinary.com/dhgeqswqq/image/upload/v1723921646/Animation_Gif_stabu4.gif)
 
 ## Description
 Our MVP e-commerce website provides a basic yet functional platform for both customers and vendors to interact. Customers can view products, add them to their cart, place orders, and delete items from their cart. Vendors, on the other hand, can add products, view their existing products, edit product details, and delete products.
